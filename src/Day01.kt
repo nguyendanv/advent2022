@@ -1,10 +1,19 @@
 fun main() {
     fun part1(input: List<String>): Int {
-        return input.size
+        return input
+            .joinToString("\n")
+            .split("\n\n")
+            .maxOfOrNull { it.split("\n").sumOf(String::toInt) }!!
     }
 
     fun part2(input: List<String>): Int {
-        return input.size
+        return input
+            .joinToString("\n")
+            .split("\n\n")
+            .map { it.split("\n").sumOf(String::toInt) }
+            .sortedDescending()
+            .subList(0, 3)
+            .sum()
     }
 
     // test if implementation meets criteria from the description, like:
