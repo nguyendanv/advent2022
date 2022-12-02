@@ -6,7 +6,7 @@ fun main() {
     )
 
     val losesMap = beatsMap
-        .map { (k,v) -> v to k }
+        .map { (k, v) -> v to k }
         .toMap()
 
     val pointValues = mapOf(
@@ -27,7 +27,7 @@ fun main() {
     fun part1(input: List<String>): Int {
         return input
             .map { it.split(" ") }
-            .map { listOf(pointValues[it[0]]!!, pointValues[it[1]]!!) }
+            .map { pointValues[it[0]]!! to pointValues[it[1]]!! }
             .sumOf { (elfShape, myShape) ->
                 myShape + when (elfShape) {
                     myShape -> 3
@@ -40,7 +40,7 @@ fun main() {
     fun part2(input: List<String>): Int {
         return input
             .map { it.split(" ") }
-            .map { listOf(pointValues[it[0]]!!, resultMap[it[1]]!!) }
+            .map { pointValues[it[0]]!! to resultMap[it[1]]!! }
             .sumOf { (elfShape, result) ->
                 result + when (result) {
                     3 -> elfShape
