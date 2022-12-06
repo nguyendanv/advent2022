@@ -1,20 +1,19 @@
 fun main() {
-    fun part1(input: List<String>): Int {
-        val windows = input[0].windowed(4, 1)
+    fun findStart(input: List<String>, uniqueChars: Int): Int {
+        val windows = input[0].windowed(uniqueChars, 1)
         for (i in windows.indices) {
-            if (windows[i].toSet().size==4)
-                return i+4
+            if (windows[i].toSet().size==uniqueChars)
+                return i + uniqueChars
         }
         return -1
     }
 
+    fun part1(input: List<String>): Int {
+        return findStart(input, 4)
+    }
+
     fun part2(input: List<String>): Int {
-        val windows = input[0].windowed(14, 1)
-        for (i in windows.indices) {
-            if (windows[i].toSet().size==14)
-                return i+14
-        }
-        return -1
+        return findStart(input, 14)
     }
 
     // test if implementation meets criteria from the description, like:
